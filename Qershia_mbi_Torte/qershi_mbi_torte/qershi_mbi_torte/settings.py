@@ -25,8 +25,11 @@ SECRET_KEY = "django-insecure-l&5c8@v83+vv%+qd*y7))%$rq6&0dd6yv@q&_n=o5)ie16a8i8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [qershia-mbi-torte-1.onrender.com]
-
+ALLOWED_HOSTS = [
+    "qershia-mbi-torte-1.onrender.com",
+    "localhost",
+    "127.0.0.1"
+]
 
 # Application definition
 
