@@ -1,0 +1,139 @@
+{% extends "shop/navbar_footer.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+.cart-container {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: #ffeaf2;
+}
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+.cart-info {
+    flex: 1;
+}
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cart-actions a, .cart-actions button {
+    background: #e91e63;
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+.cart-actions a:hover, .cart-actions button:hover {
+    background: #c2185b;
+}
+.total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+    color: #e91e63;
+}
+.checkout-btn {
+    background: #e91e63;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    text-decoration: none;
+}
+.checkout-btn:hover {
+    background: #c2185b;
+}
+</style>
+
+<div class="cart-container">
+    <h2 style="text-align:center; color:#e91e63;">Shporta Ime</h2>
+    <hr>
+
+    {% for item in cart_items %}
+    <div class="cart-item">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+        <div class="cart-info">
+            <strong>{{ item.product.name }}</strong><br>
+            Çmimi: {{ item.price }} Lekë / copë
+        </div>
+        <div class="cart-actions">
+            <a href="{% url 'update_cart' item.product.id %}?action=remove"
+               class="update-cart" data-product="{{ item.product.id }}">-</a>
+
+            <span id="quantity-{{ item.product.id }}">{{ item.quantity }}</span>
+
+            <a href="{% url 'update_cart' item.product.id %}?action=add"
+               class="update-cart" data-product="{{ item.product.id }}">+</a>
+
+            <a href="{% url 'remove_from_cart' item.product.id %}"
+               style="background:#ff4444;">🗑</a>
+        </div>
+    </div>
+    {% empty %}
+    <p style="text-align:center;">Shporta është bosh.</p>
+    {% endfor %}
+
+    <p class="total">Totali: <span id="total-price">{{ total }}</span> Lekë</p>
+
+  {% if cart_items %}
+   <a href="{% url 'create_order_from_cart' %}" class="checkout-btn">Procedo me pagesën</a>
+{% endif %}
+ </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".update-cart");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const url = this.getAttribute("href");
+            const productId = this.dataset.product;
+
+            fetch(url, {
+                headers: { "X-Requested-With": "XMLHttpRequest" }
+            })
+            .then(res => res.json())
+            .then(data => {
+                // përditëso quantity
+                document.querySelector(`#quantity-${productId}`).innerText = data.quantity;
+                // përditëso totalin
+                document.querySelector(`#total-price`).innerText = data.total + " Lekë";
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "shop/navbar_footer.html" %}
+{% block content %}
+<style>
+/* Butonat */
+ .btns {
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top: 20px;
+}
+
+.btns a {
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+</style>
+
+<div class="bank-container">
+  <h1>Pagesa me Bankë</h1>
+<div>
+    <h1>Ju kërkojm ndjesë!</h1>
+    <p>Mometalisht ofrojme vetem mundesine e pageses Cash.Po punojmë për të përmirësuar faqen tonë. Faleminderit për durimin tuaj dhe rikthehuni së shpejti!</p>
+  </div>
+
+        <div class="btns">
+            <a href="{% url 'products' %}" class="btn-primary">Shfleto Produktet </a></div>
+<!--  -->
+<!--  <p class="total"><strong>Total:</strong> ${{ order.total_price }}</p>-->
+
+<!--  <form method="POST" id="bankForm">-->
+<!--    {% csrf_token %}-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="iban">IBAN</label>-->
+<!--      <input type="text" id="iban" name="iban" placeholder= "AL********************" maxlength="28" minlength="28" required>-->
+<!--      <small>IBAN duhet te kete 28 karaktere</small>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="swift">SWIFT/BIC</label>-->
+<!--      <input type="text" id="swift" name="swift" placeholder="Shkruani SWIFT/BIC" required>-->
+<!--      <small>Ky është kod unik i bankës.</small>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="account_number">Numri i Llogarisë</label>-->
+<!--      <input type="text" id="account_number" name="account_number" placeholder="00********" required>-->
+<!--      <small>Numri i llogarisë.</small>-->
+<!--    </div>-->
+
+<!--    <input type="hidden" name="payment_method" value="bank_transfer">-->
+
+<!--    <button type="submit" class="btn-confirm">Konfirmo Pagesën</button>-->
+<!--  </form>-->
+<!--</div>-->
+
+<style>
+.bank-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  background-color: #fff7f5;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.bank-container h1 {
+  margin-bottom: 30px;
+  color: #d26b5a;
+  font-size: 1.8em;
+}
+
+.total {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.bank-form .form-group {
+  margin-bottom: 50px !important; /* !important e detyron të aplikohet */
+}
+
+
+.bank-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* hapësira midis çdo grupi */
+}
+
+.bank-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bank-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.bank-form small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: #888;
+}
+
+.btn-confirm {
+  display: block;
+  width: 100%;
+  background-color: #d26b5a;
+  color: #fff;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.btn-confirm:hover {
+  background-color: #b44b38;
+}
+</style>
+
+<!--<script>-->
+<!--const form = document.getElementById('bankForm');-->
+<!--form.addEventListener('submit', function(event) {-->
+<!--  const iban = document.getElementById('iban').value.trim();-->
+<!--  const swift = document.getElementById('swift').value.trim();-->
+<!--  const account = document.getElementById('account_number').value.trim();-->
+
+<!--  if (iban.length !== 28 || !iban.startsWith('AL')) {-->
+<!--    alert("IBAN duhet të ketë 28 karaktere dhe të fillojë me 'AL'.");-->
+<!--    event.preventDefault();-->
+<!--    return;-->
+<!--  }-->
+
+<!--  if (swift === "") {-->
+<!--    alert("SWIFT është i detyrueshëm.");-->
+<!--    event.preventDefault();-->
+<!--    return;-->
+<!--  }-->
+
+<!--  if (account === "") {-->
+<!--    alert("Numri i Llogarisë është i detyrueshëm.");-->
+<!--    event.preventDefault();-->
+<!--    return;-->
+<!--  }-->
+<!--});-->
+<!--</script>-->
+
+{% endblock %}
+
+

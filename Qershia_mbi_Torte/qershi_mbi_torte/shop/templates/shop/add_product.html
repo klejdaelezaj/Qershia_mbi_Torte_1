@@ -1,0 +1,30 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Porosit Produkt - Qershi mbi Tortë{% endblock %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center; margin-top:30px;">
+    <div style="border:1px solid #ccc; padding:20px; border-radius:10px; background-color: rgba(255,255,255,0.9); max-width:300px; text-align:center;">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:100%; height:auto; border-radius:5px;">
+        <h2>{{ product.name }}</h2>
+        <p><strong>Çmimi:</strong> {{ product.price }} €</p>
+        <p><strong>Sasia e disponueshme:</strong> {{ product.quantity }}</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="quantity">Zgjidh sasine që do:</label><br>
+            <input type="number" name="quantity" id="quantity" min="1" max="{{ product.quantity }}" value="1" style="width:60px; text-align:center; margin:10px 0;">
+            <br>
+            <button type="submit" style="padding:10px 15px; background-color:#d2a6a1; color:black; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">
+                Shto në Cart
+            </button>
+        </form>
+
+        <p style="margin-top:15px;">
+            <a href="{% url 'products' %}" style="color:#d32f2f; text-decoration:underline;">⬅ Kthehu te lista e produkteve</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
