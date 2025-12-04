@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-l&5c8@v83+vv%+qd*y7))%$rq6&0dd6yv@q&_n=o5)ie16a8i8
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "qershia-mbi-torte-1.onrender.com",
+    'qershiambitorte.onrender.com',
     "localhost",
     "127.0.0.1"
 ]
