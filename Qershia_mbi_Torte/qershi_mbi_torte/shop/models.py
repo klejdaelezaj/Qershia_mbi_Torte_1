@@ -18,7 +18,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     available_quantity = models.IntegerField(default=0)
     ordered_quantity = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='images/', default='images/default.png')
+    image = models.ImageField(upload_to='product/', default='product/default.png')
 
     def __str__(self):
         return self.name
